@@ -1,0 +1,22 @@
+# Python bytecode files
+__pycache__/
+*.pyc
+*.pyo
+
+# Virtual environment
+.venv/
+venv/
+
+# IDE configuration
+.vscode/
+
+# SQLite database
+*.sqlite3
+db.sqlite3
+
+# Log files
+*.log
+
+# Static and media files (если они генерируются автоматически)
+static/
+media/
