@@ -30,7 +30,6 @@ Django-приложение «Blogicum» — это платформа для п
 1. **Клонируйте репозиторий:**
    ```bash
    git clone https://github.com/Guram-Gurych/b.git
-   cd b
    ```
 
 2. **Создайте виртуальное окружение:**
