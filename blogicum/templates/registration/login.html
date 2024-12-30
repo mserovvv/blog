@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load django_bootstrap5 %}
+
+{% block content %}
+  <!-- Уведомления о доступе к странице -->
+  {% if next %}
+    {% if user.is_authenticated %}
+      <p class="text-center">
+        У вашего аккаунта нет доступа к этой странице.
+        Чтобы продолжить, войдите в систему с аккаунтом,
+        у которого есть доступ.
+      </p>
+    {% else %}
+      <p class="text-center">
+        Пожалуйста, войдите в систему,
+        чтобы просматривать эту страницу.
+      </p>
+    {% endif %}
+  {% endif %}
+
+  <!-- Форма входа -->
+  <div class="col d-flex justify-content-center">
+    <div class="card" style="width: 40rem;">
+      <div class="card-header">
+        Войти в систему
+      </div>
+      <div class="card-body">
+        <form method="post" action="{% url 'login' %}">
+          {% csrf_token %} <!-- Токен защиты CSRF -->
+          {% bootstrap_form form %} <!-- Форма входа с использованием Bootstrap -->
+          <input type="hidden" name="next" value="{{ next }}"> <!-- Скрытое поле для редиректа -->
+          {% bootstrap_button button_type="submit" content="Войти" %} <!-- Кнопка отправки -->
+        </form>
+        <div>
+          <a href="{% url 'password_reset' %}">Забыли пароль?</a> <!-- Ссылка для восстановления пароля -->
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

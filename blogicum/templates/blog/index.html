@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}
+  <!-- Заголовок страницы -->
+  Лента записей
+{% endblock %}
+
+{% block content %}
+  <!-- Перебор постов из объекта пагинации -->
+  {% for post in page_obj %}
+    <article class="mb-5">
+      {% include "includes/post_card.html" %} <!-- Включение шаблона карточки поста -->
+    </article>
+  {% endfor %}
+
+  <!-- Включение шаблона пагинации -->
+  {% include "includes/paginator.html" %}
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load django_bootstrap5 %}
+
+{% block title %}
+  <!-- Заголовок страницы -->
+  Редактирование профиля
+{% endblock %}
+
+{% block content %}
+  <div class="col d-flex justify-content-center">
+    <div class="card" style="width: 40rem;">
+      <div class="card-header">
+        <!-- Заголовок карточки с именем пользователя -->
+        Редактирование профиля - {{ request.user.username }}
+      </div>
+      <div class="card-body">
+        <form method="post">
+          {% csrf_token %} <!-- Токен защиты CSRF -->
+          {% bootstrap_form form %} <!-- Визуализация формы с использованием Bootstrap -->
+          {% bootstrap_button button_type="submit" content="Отправить" %} <!-- Кнопка отправки -->
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}
